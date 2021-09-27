@@ -18,7 +18,13 @@ d.getBanks()
       amount: 10000,
     })),
   )
-  .then(disbursements => d.createBatch({ reference: '111', disbursements }))
+  .then(disbursements =>
+    d.createBatch({
+      reference: '111',
+      disbursements,
+      forUserID: process.env.XENPLATFORM_ID,
+    }),
+  )
   .then(r => {
     console.log('batch created:', r); // eslint-disable-line no-console
     return d.getBanks();
@@ -31,6 +37,7 @@ d.getBanks()
       accountNumber: '1234567890',
       description: `purchase paid from ${b[0].name}`,
       amount: 10000,
+      forUserID: process.env.XENPLATFORM_ID,
     }),
   )
   .then(r => {

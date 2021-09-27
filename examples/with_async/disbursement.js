@@ -16,7 +16,11 @@ const d = new Disbursement({});
       description: `purchase paid from ${b.name}`,
       amount: 10000,
     }));
-    const batch = await d.createBatch({ reference: '111', disbursements });
+    const batch = await d.createBatch({
+      reference: '111',
+      disbursements,
+      forUserID: process.env.XENPLATFORM_ID,
+    });
     console.log('batch created:', batch); // eslint-disable-line no-console
 
     let disb = await d.create({
@@ -26,6 +30,7 @@ const d = new Disbursement({});
       accountNumber: '1234567890',
       description: `purchase paid from ${banks[0].name}`,
       amount: 10000,
+      forUserID: process.env.XENPLATFORM_ID,
     });
     // eslint-disable-next-line no-console
     console.log('disbursement created:', disb);
