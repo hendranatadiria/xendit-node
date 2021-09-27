@@ -19,6 +19,10 @@ function create(data) {
       data.xIdempotencyKey,
     );
 
+    if (data && data.forUserID) {
+      headers['for-user-id'] = data.forUserID;
+    }
+
     fetchWithHTTPErr(`${this.API_ENDPOINT}/disbursements`, {
       method: 'POST',
       headers,
@@ -56,6 +60,10 @@ function createBatch(data) {
       data.xIdempotencyKey,
     );
 
+    if (data && data.forUserID) {
+      headers['for-user-id'] = data.forUserID;
+    }
+
     fetchWithHTTPErr(`${this.API_ENDPOINT}/batch_disbursements`, {
       method: 'POST',
       headers,
@@ -90,13 +98,19 @@ function _transformDisbursementForRequestBody(disbursement) {
 function getByID(data) {
   return promWithJsErr((resolve, reject) => {
     Validate.rejectOnMissingFields(['disbursementID'], data, reject);
+    var headers = {
+      Authorization: Auth.basicAuthHeader(this.opts.secretKey),
+    };
+
+    if (data && data.forUserID) {
+      headers['for-user-id'] = data.forUserID;
+    }
+    
     fetchWithHTTPErr(
       `${this.API_ENDPOINT}/disbursements/${data.disbursementID}`,
       {
         method: 'GET',
-        headers: {
-          Authorization: Auth.basicAuthHeader(this.opts.secretKey),
-        },
+        headers: headers,
       },
     )
       .then(resolve)
@@ -107,13 +121,19 @@ function getByID(data) {
 function getByExtID(data) {
   return promWithJsErr((resolve, reject) => {
     Validate.rejectOnMissingFields(['externalID'], data, reject);
+    var headers = {
+      Authorization: Auth.basicAuthHeader(this.opts.secretKey),
+    };
+
+    if (data && data.forUserID) {
+      headers['for-user-id'] = data.forUserID;
+    }
+    
     fetchWithHTTPErr(
       `${this.API_ENDPOINT}/disbursements?external_id=${data.externalID}`,
       {
         method: 'GET',
-        headers: {
-          Authorization: Auth.basicAuthHeader(this.opts.secretKey),
-        },
+        headers: headers,
       },
     )
       .then(resolve)
