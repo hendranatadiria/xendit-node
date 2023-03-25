@@ -31,6 +31,7 @@ const d = new Disbursement({});
       description: `purchase paid from ${banks[0].name}`,
       amount: 10000,
       forUserID: process.env.XENPLATFORM_ID,
+      forUserID: 'for-user-id-test',
     });
     // eslint-disable-next-line no-console
     console.log('disbursement created:', disb);

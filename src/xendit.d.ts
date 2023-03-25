@@ -4,7 +4,8 @@ import { VAService } from './va';
 import { DisbursementService } from './disbursement';
 import { InvoiceService } from './invoice';
 import { PayoutService } from './payout';
-import { RecurringPayment } from './recurring';
+import { RecurringPayment } from './recurring_payment';
+import { Recurring } from './recurring';
 import { XenditOptions } from './xendit_opts';
 import { EWalletService } from './ewallet';
 import { BalanceServices } from './balance';
@@ -13,6 +14,11 @@ import { QrCode } from './qr_code';
 import { PlatformService } from './platform';
 import { CustomerService } from './customer';
 import { DirectDebitService } from './direct_debit';
+import { ReportService } from './report';
+import { TransactionService } from './transaction';
+import { PaymentRequestService } from './payment_request';
+import { PaymentMethodV2Service } from './payment_method_v2';
+import { RefundService } from './refund';
 
 declare class Xendit {
   constructor(opts: XenditOptions);
@@ -23,6 +29,8 @@ declare class Xendit {
   Invoice: typeof InvoiceService;
   Payout: typeof PayoutService;
   RecurringPayment: typeof RecurringPayment;
+  Recurring: typeof Recurring;
+  RecurringPlan: typeof RecurringPlan;
   EWallet: typeof EWalletService;
   Balance: typeof BalanceServices;
   RetailOutlet: typeof RetailOutletService;
@@ -30,5 +38,10 @@ declare class Xendit {
   Platform: typeof PlatformService;
   Customer: typeof CustomerService;
   DirectDebit: typeof DirectDebitService;
+  Report: typeof ReportService;
+  Transaction: typeof TransactionService;
+  PaymentRequest: typeof PaymentRequestService;
+  PaymentMethodV2: typeof PaymentMethodV2Service;
+  Refund: typeof RefundService;
 }
 export = Xendit;

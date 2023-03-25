@@ -41,6 +41,7 @@ QrCode.prototype.createCode = function(data) {
         type: data.type,
         callback_url: data.callbackURL,
         amount: data.amount,
+        metadata: data.metadata,
       }),
     })
       .then(resolve)
@@ -69,7 +70,10 @@ QrCode.prototype.simulate = function(data) {
       `${this.API_ENDPOINT}/${data.externalID}/payments/simulate`,
       {
         method: 'POST',
-        headers: { Authorization: Auth.basicAuthHeader(this.opts.secretKey) },
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: Auth.basicAuthHeader(this.opts.secretKey),
+        },
         body: JSON.stringify({ amount: data.amount }),
       },
     )

@@ -23,6 +23,14 @@ function create(data) {
       headers['for-user-id'] = data.forUserID;
     }
 
+    if (data && data.forUserID) {
+      headers['for-user-id'] = data.forUserID;
+    }
+
+    if (data && data.withFeeRule) {
+      headers['with-fee-rule'] = data.withFeeRule;
+    }
+
     fetchWithHTTPErr(`${this.API_ENDPOINT}/disbursements`, {
       method: 'POST',
       headers,
@@ -62,6 +70,13 @@ function createBatch(data) {
 
     if (data && data.forUserID) {
       headers['for-user-id'] = data.forUserID;
+    }
+    if (data && data.forUserID) {
+      headers['for-user-id'] = data.forUserID;
+    }
+
+    if (data && data.withFeeRule) {
+      headers['with-fee-rule'] = data.withFeeRule;
     }
 
     fetchWithHTTPErr(`${this.API_ENDPOINT}/batch_disbursements`, {
@@ -105,7 +120,7 @@ function getByID(data) {
     if (data && data.forUserID) {
       headers['for-user-id'] = data.forUserID;
     }
-    
+
     fetchWithHTTPErr(
       `${this.API_ENDPOINT}/disbursements/${data.disbursementID}`,
       {
@@ -128,7 +143,7 @@ function getByExtID(data) {
     if (data && data.forUserID) {
       headers['for-user-id'] = data.forUserID;
     }
-    
+
     fetchWithHTTPErr(
       `${this.API_ENDPOINT}/disbursements?external_id=${data.externalID}`,
       {

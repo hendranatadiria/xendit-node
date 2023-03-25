@@ -30,6 +30,8 @@ function createCharge(data) {
         billing_details: data.billingDetails,
         promotion: data.promotion,
         installment: data.installment,
+        metadata: data.metadata,
+        is_recurring: data.isRecurring,
       }),
     })
       .then(resolve)

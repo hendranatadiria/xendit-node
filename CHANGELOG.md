@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 2022-03-11
+
+- Added recurring service
+  - recurring schedules
+  - recurring plans
+  - recurring cycles
+
+## 2021-12-07
+
+- Added metadata to credit card charge request
+
+## 2021-11-01
+
+- Add missing recurring payment properties
+
 ## 2021-06-01
 
 - Add missing Customer and DirectDebit services types to index definition file
